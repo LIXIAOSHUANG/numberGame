@@ -5,6 +5,7 @@
 	var  result = lib.$("result");
 	var  chkbox = lib.$("box");
 	// var  textNum = document.getElementsByTagName("input").length-1;
+<<<<<<< HEAD
 	var inputs = myform.elements,
 		textNum = inputs.length - 1,
 		NumArr = [],
@@ -14,6 +15,16 @@
 		flag = 0;
 	// var  Index = [];
 	// var  Value =[]; 
+=======
+	var  inputs = myform.elements;
+	var  textNum = inputs.length -1;
+	var  NumArr = [];
+	var  InputArr =[];
+	var  Index = [];
+	var  Value =[]; 
+	var  flag = 0;
+
+>>>>>>> origin/HEAD
 	var  loadApp = {
 		/*初始化 */
 		init:function(){
@@ -42,8 +53,11 @@
 				lib.Event.AddEventListener(inputs[i],"keyup",function(){
 					/*js以代码块为单位执行不进行绑定在this会产生覆盖最终只是最后一次for循环的结果而且*/
 				    var index = Array.prototype.indexOf.call(inputs,this);
+<<<<<<< HEAD
 				    // console.log(this);
 				    console.log(index);
+=======
+>>>>>>> origin/HEAD
 					if(index<4){
 						if(me.suitable(index))
 							// me.Focus(index+1);
@@ -102,11 +116,22 @@
 		},
 		/*生成随机数*/
 		Generation:function(){
+<<<<<<< HEAD
+=======
+			/*for(var i =0;i<textNum;i++){
+                  newNum = this.SingleNum();
+            	  NumArr.push(newNum);
+            	}*/
+>>>>>>> origin/HEAD
 		  var newNum;
 		   if(chkbox.checked){
             	while(NumArr.length<=4){            		
             		newNum = this.SingleNum();
+<<<<<<< HEAD
             		/*直接if(！NumArr.indexOf(newNum)) 不对非0为TRUE,0为FALSE*/
+=======
+            		/*直接if(！NumArr.indexOf(newNum)) 不对*/
+>>>>>>> origin/HEAD
             		if(NumArr.indexOf(newNum)==-1)
             			NumArr.push(newNum);
             	}
@@ -127,6 +152,7 @@
            	InputArr[i] = parseInt(lib.$(i).value);
            }
 		},
+<<<<<<< HEAD
 		// 获取输入与机器数的相似匹配结果
 		getResult: function() {
 			var at = [];
@@ -158,6 +184,51 @@
 		Display:function(){			
 			// var numA = this.AllSame(),numB = this.ValueSame();
 			this.getResult();
+=======
+		/* 值和位置都相同*/
+		AllSame:function(){
+            var num = 0;
+            for(var i=0;i<textNum;i++){
+            	if(InputArr[i]==NumArr[i]){
+            		num +=1;
+            	}else{
+            		 Index.push(i);
+            		 Value.push(NumArr[i]);
+            	}
+            }
+            return num;
+		},
+		/* 值相同位置不同*/
+		ValueSame:function(){
+			var num2 = 0;
+			for(var i=0;i< Index.length;i++)				
+				for(var j=0;j< Index.length;j++){
+					if(InputArr[Index[i]]==Value[j])
+					{
+                       num2 +=1;
+                       Value[j] = -1;
+                       break;
+                       // continue;  /////存在错误   为什么是继续执行内循环呢？？？？		
+					}
+			 };			  
+			 /*for(var i=0;i< Index.length;i++)				
+			   for(var j=0;j<textNum;j++){
+				   if(InputArr[Index[i]]==NumArr[j])
+				   {
+                        num2 +=1;
+                         break;
+                         // continue;  /////存在错误   为什么是继续执行内循环呢？？？？		
+				   }
+		     }*/
+			  
+	    Value = [];
+	    Index = [];
+	    return num2;				
+		},
+		Display:function(){			
+			var numA = this.AllSame();
+			var numB = this.ValueSame();
+>>>>>>> origin/HEAD
 			if(numA!=textNum){
 			var addResult ="";
 			// var random ='';
@@ -191,6 +262,7 @@
 		}
 	};
 	loadApp.init();
+<<<<<<< HEAD
 })()	/* 值和位置都相同*/
 		// AllSame:function(){
   //           var num = 0;
@@ -230,3 +302,6 @@
 	    // Index = [];
 	 //    return num2;				
 		// },
+=======
+})()
+>>>>>>> origin/HEAD
